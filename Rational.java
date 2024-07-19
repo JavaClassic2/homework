@@ -3,8 +3,13 @@ public class Rational {
     private int denominator;
 
     public Rational(int nominator, int denominator) {
-        this.nominator = nominator / gcd(nominator, denominator);
-        this.denominator = denominator / gcd(nominator, denominator);
+        if (isMinus(nominator, denominator)) {
+            this.nominator = Math.abs(nominator / gcd(nominator, denominator)) * -1;
+            this.denominator = Math.abs(denominator / gcd(nominator, denominator));
+        } else {
+            this.nominator = Math.abs(nominator / gcd(nominator, denominator));
+            this.denominator = Math.abs(denominator / gcd(nominator, denominator));
+        }
     }
 
     public int getNominator() {
@@ -13,6 +18,13 @@ public class Rational {
 
     public int getDenominator() {
         return this.denominator;
+    }
+
+    public boolean isMinus(int nominator, int denominator) {
+        if (nominator < 0 ^ denominator < 0) {
+            return true;
+        }
+        return false;
     }
 
     public Rational add(Rational r1, Rational r2) {
@@ -77,7 +89,7 @@ public class Rational {
     }
 
     public static void test2() {
-        Rational r1 = new Rational(5, 8);
+        Rational r1 = new Rational(5, -8);
         int i = 5;
         System.out.printf("%s + %d = %s\n", r1, i, r1.add(i));
         System.out.printf("%s - %d = %s\n", r1, i, r1.substract(i));
