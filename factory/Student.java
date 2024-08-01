@@ -1,5 +1,5 @@
-@CreationType(type = "ProtoType")
-public class Student extends DataBeam{
+@CreationType(type = ClassType.ProtoType)
+public class Student implements DataBean{
     private int no;
     private String name;
 

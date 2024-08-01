@@ -1,8 +1,13 @@
-@CreationType(type = "SingleTone")
-public class NoGenerator extends DataBeam{
+@CreationType(type = ClassType.SingleTone)
+public class NoGenerator implements DataBean{
     private int no;
 
     public int getNo() {
         return no++;
+    }
+
+    @Override
+    public DataBean clone() {
+        return new NoGenerator();
     }
 }
