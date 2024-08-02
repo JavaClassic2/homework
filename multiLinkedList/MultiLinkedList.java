@@ -9,7 +9,7 @@ public class MultiLinkedList<T> implements List<T>{
             head = new Node<>(null, t);
             return;
         }
-        
+
         Node<T> lastNode = findNode(size()-1);
         lastNode.setNext(new Node<T>(lastNode, null, t));
     }
@@ -35,7 +35,7 @@ public class MultiLinkedList<T> implements List<T>{
     @Override
     public int size() {
         Node<T> node = head;
-        int size = 0;
+        int size = 1;
         
         while (node.getNext() != null) {
             node = node.getNext();
